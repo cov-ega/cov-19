@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ConnectionService} from '../services/connection.service';
 
 @Component({
   selector: 'app-connection',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./connection.component.scss']
 })
 export class ConnectionComponent implements OnInit {
-
-  constructor() { }
+  connections: Array<any>;
+  familyMembers: Array<any>;
+  constructor(private connectionService: ConnectionService) { }
 
   ngOnInit() {
+    this.connections = this.connectionService.getConnections();
+    this.familyMembers = this.connectionService.getFamily();
   }
 
 }

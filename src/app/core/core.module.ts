@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {EnsureModuleLoadedOnceGuard} from './ensure-module-loaded-once.guard';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
-import {DataService} from './services/data.service';
+import {UserService} from './services/user.service';
 
 
 
@@ -16,7 +16,7 @@ import {DataService} from './services/data.service';
       useClass: AuthInterceptor,
       multi: true,
     },
-    DataService,
+    UserService,
   ],
   imports: [
     CommonModule,

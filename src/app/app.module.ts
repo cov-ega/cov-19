@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    CommonModule,
     BrowserAnimationsModule
   ],
   providers: [],
