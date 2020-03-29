@@ -1,0 +1,79 @@
+.no-text-selection {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                              supported by Chrome and Opera */
+}
+
+.outline-none {
+	&:focus,
+	&:active {
+		outline: 0;
+	}
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.ov-hidden {
+	overflow: hidden;
+}
+
+.ov-y-hidden {
+	overflow-y: hidden !important;
+}
+
+.ov-x-hidden {
+	overflow-x: hidden !important;
+}
+
+.word-break {
+	word-break: break-word;
+	white-space: pre-wrap;
+}
+.no-wrap {
+	white-space: nowrap;
+}
+.opacity-75 {
+	opacity: 0.75;
+}
+
+.opacity-50 {
+	opacity: 0.5;
+}
+
+.opacity-25 {
+	opacity: 0.25;
+}
+
+.shadow-primary {
+	box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow-secondary {
+	box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.24);
+}
+
+.obj-fit-cover {
+	object-fit: cover;
+}
+
+.text-auto-width {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+	width: 100%;
+}
+.z-index-0 {
+	z-index: 0
+}
+
+.z-index-1 {
+	z-index: 1;
+}
+

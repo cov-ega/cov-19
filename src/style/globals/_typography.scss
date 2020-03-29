@@ -1,0 +1,72 @@
+$font-weight-normal: 400;
+$font-weight-medium: 600;
+$font-weight-bold: 700;
+
+h1 {
+	font-size: $h1-font-size;
+	font-weight: $font-weight-bold;
+	line-height: $line-height-primary;
+}
+h2 {
+	font-size: $h2-font-size;
+	font-weight: $font-weight-bold;
+	line-height: $line-height-secondary;
+}
+h3 {
+	font-size: $h3-font-size;
+	font-weight: $font-weight-bold;
+	line-height: $line-height-tertiary;
+}
+h4 {
+	font-size: $h4-font-size;
+	font-weight: $font-weight-bold;
+	line-height: $line-height-quaternary;
+}
+h5 {
+	font-size: $h5-font-size;
+	font-weight: $font-weight-bold;
+	line-height: $line-height-secondary;
+}
+h6 {
+	font-size: $h6-font-size;
+	font-weight: $font-weight-bold;
+	line-height: $line-height-primary;
+}
+
+.p1 {
+	font-size: $p1-font-size;
+	font-weight: $font-weight-medium;
+	line-height: $line-height-tertiary;
+}
+.p2 {
+	font-size: $p2-font-size;
+	font-weight: $font-weight-medium;
+	line-height: $line-height-quaternary;
+}
+.p3 {
+	font-size: $p3-font-size;
+	font-weight: $font-weight-medium;
+	line-height: $line-height-secondary;
+}
+.p4 {
+	font-size: $p4-font-size;
+	font-weight: $font-weight-medium;
+	line-height: $line-height-primary;
+}
+
+.icon-size-primary {
+	font-size: $font-size-base;
+	padding: 0px;
+}
+.icon-size-secondary {
+	font-size: $font-size-base * 1.125;
+	padding: 3px;
+}
+.icon-size-tertiary {
+	font-size: $h2-font-size;
+	padding: 4px;
+}
+.icon-size-quaternary {
+	font-size: $h1-font-size;
+	padding: 4px;
+}

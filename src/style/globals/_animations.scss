@@ -1,0 +1,28 @@
+@mixin transition-basic($property) {
+	transition: 0.3s $property ease-in-out;
+}
+
+@mixin transition-double($property) {
+	transition: 0.6s $property ease-in-out;
+}
+
+.transition-basic {
+	transition: 0.3s ease-in-out;
+}
+
+
+
+
+.opacity-effect {
+  transition: 0.05s ease-in-out;
+
+	&:not(.opacity-no-hover) {
+		&:hover {
+			opacity: 0.88;
+		}
+	}
+
+	&:active {
+		opacity: 0.88;
+	}
+}
