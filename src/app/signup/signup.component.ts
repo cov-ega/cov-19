@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+
+
+function passwordConfirming(c: AbstractControl): { invalid: boolean } {
+
+  if (c.get('password').value !== c.get('confirm_password').value) {
+    return {invalid: true};
+  }
+}
 
 @Component({
   selector: 'app-signup',
@@ -20,14 +28,18 @@ export class SignupComponent implements OnInit {
 
   constructor(private router: Router, private formBuilder: FormBuilder) {
   }
-
+  // TODO: Validate form and implement http request
   ngOnInit() {
     this.userSignUpForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       surname: ['', [Validators.required, Validators.minLength(3)]],
       email_address: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
-      repeat_password: ['', [Validators.required, Validators.minLength(3)]],
+      passwordGroup: this.formBuilder.group({
+        password: ['', [Validators.required]],
+        confirm_password: ['', [Validators.required]],
+      }, {validator: passwordConfirming}),
+      // password: ['', [Validators.required, Validators.minLength(3)]],
+      // confirm_password: ['', [Validators.required, this.passwordConfirming , Validators.minLength(3)]],
 
       phone_number: ['', [Validators.required, Validators.minLength(3)]],
       personal_id: ['', [Validators.minLength(3)]],
@@ -39,8 +51,9 @@ export class SignupComponent implements OnInit {
     });
   }
 
+
   login() {
-    console.log(this.userSignUpForm);
+    console.log(this.userSignUpForm.value);
     // this.router.navigate(['/dashboard']);
   }
   back() {
@@ -49,6 +62,9 @@ export class SignupComponent implements OnInit {
   next() {
       this.isLeftVisible = false;
   }
+
+
+
 
 
 }

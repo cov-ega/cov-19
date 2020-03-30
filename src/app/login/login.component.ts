@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,19 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   userLoginForm: FormGroup;
 
-
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  // TODO: Validate Form and make http request
+  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {
     this.userLoginForm = this.formBuilder.group({
-      userName: ['', [Validators.required, Validators.minLength(3)]],
-      userPassword: ['', [Validators.required, Validators.minLength(3)]]
+      email: ['', [Validators.required, Validators.email , Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
   login() {
-    console.log(this.userLoginForm);
+    this.userService.login(this.userLoginForm.value);
     // this.router.navigate(['/dashboard']);
   }
 

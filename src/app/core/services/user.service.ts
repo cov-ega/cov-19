@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 const user = {
@@ -27,6 +27,10 @@ export class UserService {
 
   getUserData() {
     return user;
+  }
+
+  login(userData) {
+    console.log(userData);
   }
 
 

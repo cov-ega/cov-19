@@ -2,28 +2,31 @@
   <div class="container-fluid border-box mt-10 mb-4 pt-6 pb-6 shadow-8dp-d">
     <div class="row w-100">
       <div class="col-12 text-center">
-        <h2 class="text-gray">Sign In</h2>
+        <h2 class="text-gray">Log In</h2>
       </div>
       <div class="col-12 text-center">
-        <h4 class="text-gray">to continue to AntiConv</h4>
+        <h4 class="text-gray">to start using AntiConv</h4>
       </div>
     </div>
     <form (ngSubmit)="login()" [formGroup]="userLoginForm" class="align-self-center w-100 container-fluid mt-3">
       <div class=" row m-auto">
         <div class="col-12 px-0 pb-2">
           <mat-form-field class="example-full-width w-100">
-            <mat-label>Username*</mat-label>
-            <input formnovalidate matInput placeholder="Enter your username" formControlName="userName">
-            <mat-error *ngIf="userLoginForm.get('userName').hasError('required')">
+            <mat-label>Email*</mat-label>
+            <input formnovalidate matInput placeholder="Enter your username" formControlName="email">
+            <mat-error *ngIf="userLoginForm.get('email').hasError('required')">
               Username is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="!userLoginForm.get('email').hasError('required') &&  userLoginForm.get('email').hasError('email')">
+              Please write a correct <strong>email</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col-12 px-0 pb-2">
           <mat-form-field class="example-full-width w-100">
             <mat-label>Password*</mat-label>
-            <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="userPassword">
-            <mat-error *ngIf="userLoginForm.get('userName').hasError('required')">
+            <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="password">
+            <mat-error *ngIf="userLoginForm.get('password').hasError('required')">
               Password is <strong>required</strong>
             </mat-error>
           </mat-form-field>
@@ -41,7 +44,7 @@
           <span class="forgot-password mx-0 align-self-center">Forgot password?</span>
         </div>
         <div class="col-auto">
-          <button mat-raised-button color="primary" (submit)="login()" [disabled]="!userLoginForm.valid">Sign In
+          <button mat-raised-button color="primary" (submit)="login()" [disabled]="!userLoginForm.valid">Log In
           </button>
         </div>
       </div>
