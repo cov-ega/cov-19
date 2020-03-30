@@ -1,0 +1,68 @@
+.is-invalid{
+  background-color: red;
+}
+
+@media (min-width: 450px) {
+  .border-box {
+    padding-left:40px;
+    padding-right:40px;
+
+  }
+
+}
+.w-150{
+  width: 150px;
+}
+.forgot-password{
+  color: #1a73e8;
+  margin: 8px;
+  text-transform: none;
+  font-weight: bold;
+}
+@media (min-width: 601px) {
+  .border-box::before {
+    min-height: 30px;
+  }
+  .border-box{
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    max-width: 450px;
+    height: fit-content;
+  }
+  .align-login-md-center{
+    align-self: center;
+  }
+}
+@media (max-width: 601px) {
+  .border-box {
+    padding-top:0px!important;
+  }
+}
+.text-link{
+  color: #1a73e8;
+}
+.text-gray{
+  color:#5f6368
+}
+.font-500{
+  font-weight: 500;
+}
+.login-container{
+  position: relative;
+  display: flex;
+}
+
+
+
+:host {
+  display: block;
+  overflow: hidden; /* Hide everything that doesn't fit compoennt */
+}
+.parent {
+  height: 100%;
+  width: 200%;      /* Make the parent element to take up twice
+                       of the component's width */
+  display: flex;    /* Align all children in a row */
+  div { flex: 1; }  /* Evenly divide width between children */
+}
+

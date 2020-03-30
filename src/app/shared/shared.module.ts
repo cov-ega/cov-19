@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SimplePipePipe } from './pipes/simple-pipe.pipe';
 import { DirectivesDirective } from './directives/directives.directive';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import {MaterialModule} from './material-module/material/material.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -17,6 +17,7 @@ import {MaterialModule} from './material-module/material/material.module';
   imports: [
     CommonModule,
     SharedRoutingModule,
+    ReactiveFormsModule,
     MaterialModule
   ]
 })

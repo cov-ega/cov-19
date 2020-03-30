@@ -5,13 +5,15 @@ const user = {
   id: 1,
   name: 'Ard',
   surname: 'Ademi',
-  username: 'ArdAdemi_ks',
+  password: 'dadsadsa',
   email_address: 'ardademi96@gmail.com',
+
+
   phone_number: '045580638',
   personal_id: '1176291377',
   street: 'Preng Doci',
   city: 'Prishtine',
-  zip: 10000,
+  // zip: 10000,
   country: 'Kosova',
   profile_image: '../../../assets/user_placeholder.png'
 };

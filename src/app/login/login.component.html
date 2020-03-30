@@ -1,1 +1,51 @@
-<p>login works!</p>
+<div class="login-container mat-checkbox-background">
+  <div class="container-fluid border-box mt-10 mb-4 pt-6 pb-6 shadow-8dp-d">
+    <div class="row w-100">
+      <div class="col-12 text-center">
+        <h2 class="text-gray">Sign In</h2>
+      </div>
+      <div class="col-12 text-center">
+        <h4 class="text-gray">to continue to AntiConv</h4>
+      </div>
+    </div>
+    <form (ngSubmit)="login()" [formGroup]="userLoginForm" class="align-self-center w-100 container-fluid mt-3">
+      <div class=" row m-auto">
+        <div class="col-12 px-0 pb-2">
+          <mat-form-field class="example-full-width w-100">
+            <mat-label>Username*</mat-label>
+            <input formnovalidate matInput placeholder="Enter your username" formControlName="userName">
+            <mat-error *ngIf="userLoginForm.get('userName').hasError('required')">
+              Username is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 px-0 pb-2">
+          <mat-form-field class="example-full-width w-100">
+            <mat-label>Password*</mat-label>
+            <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="userPassword">
+            <mat-error *ngIf="userLoginForm.get('userName').hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row  pt-2">
+        <div class="col d-flex" style="max-width: 280px">
+          <h4 class="text-gray font-500">If you cannot log in please contact us in this <a class="text-link"
+                                                                                           href="mailto:support@anticonv.com">email</a>
+          </h4>
+        </div>
+      </div>
+      <div class="row  pt-4">
+        <div class="col d-flex">
+          <span class="forgot-password mx-0 align-self-center">Forgot password?</span>
+        </div>
+        <div class="col-auto">
+          <button mat-raised-button color="primary" (submit)="login()" [disabled]="!userLoginForm.valid">Sign In
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

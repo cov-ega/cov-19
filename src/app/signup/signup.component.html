@@ -1,1 +1,149 @@
-<p>signup works!</p>
+<div class="login-container mat-checkbox-background">
+  <form (ngSubmit)="login()" [formGroup]="userSignUpForm" class="container-fluid border-box mt-10 mb-4 pt-6 pb-6 shadow-8dp-d">
+    <div class="row w-100">
+      <div class="col-12 text-center">
+        <h2 class="text-gray">Sign In</h2>
+      </div>
+      <div class="col-12 text-center">
+        <h4 class="text-gray">to continue to AntiConv</h4>
+      </div>
+    </div>
+    <my-slide-panel [activePane]="isLeftVisible ? 'left' : 'right'">
+      <div leftPane>
+        <div class="align-self-center w-100 container-fluid mt-3">
+            <div class=" row m-auto">
+              <div class="col-12 px-0 pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Name*</mat-label>
+                  <input formnovalidate matInput placeholder="Enter your username" formControlName="name">
+                  <mat-error *ngIf="userSignUpForm.get('name').hasError('required')">
+                    Name is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 px-0 pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Surname*</mat-label>
+                  <input formnovalidate matInput type="text" placeholder="Enter surname" formControlName="surname">
+                  <mat-error *ngIf="userSignUpForm.get('surname').hasError('required')">
+                    Surname is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 px-0 pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Email*</mat-label>
+                  <input formnovalidate matInput type="text" placeholder="Enter email" formControlName="email_address">
+                  <mat-error *ngIf="userSignUpForm.get('email_address').hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 px-0 pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Password*</mat-label>
+                  <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="password">
+                  <mat-error *ngIf="userSignUpForm.get('password').hasError('required')">
+                     Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 px-0 pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Repeat Password*</mat-label>
+                  <input formnovalidate matInput type="password" placeholder="Repeat password" formControlName="repeat_password">
+                  <mat-error *ngIf="userSignUpForm.get('repeat_password').hasError('required')">
+                    Repeat Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 px-0 pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Phone Number*</mat-label>
+                  <input formnovalidate matInput placeholder="Enter your phone number" formControlName="phone_number">
+                  <mat-error *ngIf="userSignUpForm.get('phone_number').hasError('required')">
+                    Phone Number is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row  pt-4">
+              <div class="col-auto margin-right">
+                <button mat-raised-button color="primary" (click)="next()">Next
+                </button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div rightPane>
+        <div class="align-self-center w-100 container-fluid mt-3">
+          <div class=" row m-auto">
+            <div class="col-12 px-0 pb-2">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Personal ID*</mat-label>
+                <input formnovalidate matInput type="text" placeholder="Enter you personal ID" formControlName="personal_id">
+                <mat-error *ngIf="userSignUpForm.get('personal_id').hasError('required')">
+                  Personal is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 px-0 pb-2">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Rruga*</mat-label>
+                <input formnovalidate matInput type="text" placeholder="Enter you street" formControlName="street">
+                <mat-error *ngIf="userSignUpForm.get('street').hasError('required')">
+                  Street is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 px-0 pb-2">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Qyteti</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let city of cities" [value]="city.value">
+                    {{city.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-12 px-0 pb-2">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Select an option</mat-label>
+                <mat-select [(value)]="selectedCountry" >
+                  <mat-option>None</mat-option>
+                  <mat-option value="1">Kosovo</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-12 px-0 pb-2">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Vizita e fundit jashte shtetit</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-12 px-0 pb-2">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Zip*</mat-label>
+                <input formnovalidate matInput type="text" placeholder="Enter you zip code" formControlName="zip_code">
+                <mat-error *ngIf="userSignUpForm.get('zip_code').hasError('required')">
+                  Zip code is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row  pt-4 text-right">
+            <div class="col-auto d-flex margin-right">
+              <button mat-button color="primary" (click)="back()">Back
+              </button>
+              <button class="ml-1" mat-raised-button color="primary" (submit)="login()">Finish
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </my-slide-panel>
+  </form>
+</div>
+

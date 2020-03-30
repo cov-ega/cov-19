@@ -12,6 +12,8 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from './shared/shared.module';
 import {NavbarComponent} from './shared/components/navbar/navbar.component';
 import {MaterialModule} from './shared/material-module/material/material.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {SlidePanelComponent} from './signup/slide-panel';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {MaterialModule} from './shared/material-module/material/material.module'
     LoginComponent,
     SignupComponent,
     HomePageComponent,
-    NavbarComponent
+    NavbarComponent,
+    SlidePanelComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import {MaterialModule} from './shared/material-module/material/material.module'
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
