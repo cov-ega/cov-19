@@ -9,20 +9,26 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import {CommonModule} from '@angular/common';
+import {SharedModule} from './shared/shared.module';
+import {NavbarComponent} from './shared/components/navbar/navbar.component';
+import {MaterialModule} from './shared/material-module/material/material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomePageComponent
+    HomePageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
