@@ -106,9 +106,9 @@ link{
   align-text: center;
 }
 
-$shadow-key-umbra-opacity:      0.20 !default;
-$shadow-key-penumbra-opacity:   0.14 !default;
-$shadow-ambient-shadow-opacity: 0.12 !default;
+$shadow-key-umbra-opacity:      0.1 !default;
+$shadow-key-penumbra-opacity:   0.08 !default;
+$shadow-ambient-shadow-opacity: 0.05 !default;
 
 .focus-shadow {
   box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
@@ -172,4 +172,12 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
 }
 .bg-white{
   background-color: white!important;
+}
+body{
+  background-color: #F9f9f9
+}
+@media screen and (max-width: 768px) {
+  body{
+    background-color: #FFFFFF;
+  }
 }

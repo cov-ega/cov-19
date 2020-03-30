@@ -3,19 +3,24 @@ import {HttpClient} from '@angular/common/http';
 
 const user = {
   id: 1,
-  name: 'Ard',
-  surname: 'Ademi',
-  password: 'dadsadsa',
-  email_address: 'ardademi96@gmail.com',
+
+  user_name: 'Ard',
+  user_surname: 'Ademi',
+  user_email_address: 'ardademi96@gmail.com',
+  user_password: 'dadsadsa',
+  confirm_password: 'dasdasda',
+  user_birthday: new Date(),
+  user_phone_number: '045580638',
 
 
-  phone_number: '045580638',
-  personal_id: '1176291377',
-  street: 'Preng Doci',
-  city: 'Prishtine',
-  // zip: 10000,
-  country: 'Kosova',
-  profile_image: '../../../assets/user_placeholder.png'
+  user_personal_id: '1176291377',
+  address_street: 'Preng Doci',
+  address_city: 'Prishtine',
+  address_country: 'Kosova',
+  user_profile_image: '../../../assets/user_placeholder.png',
+  user_last_travel_date: new Date(),
+  user_terms_agreement: true,
+
 };
 
 @Injectable({
@@ -31,6 +36,9 @@ export class UserService {
 
   login(userData) {
     console.log(userData);
+  }
+  signup(userData) {
+    console.log(userData)
   }
 
 

@@ -12,7 +12,7 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from './shared/shared.module';
 import {NavbarComponent} from './shared/components/navbar/navbar.component';
 import {MaterialModule} from './shared/material-module/material/material.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SlidePanelComponent} from './signup/slide-panel';
 
 @NgModule({
@@ -32,6 +32,7 @@ import {SlidePanelComponent} from './signup/slide-panel';
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],

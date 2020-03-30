@@ -1,47 +1,47 @@
 <div class="login-container mat-checkbox-background">
-  <div class="container-fluid border-box mt-10 mb-4 pt-6 pb-6 shadow-8dp-d">
+  <div class="container-fluid border-box mt-10 mb-4 pt-6 pb-6 bg-white">
     <div class="row w-100">
       <div class="col-12 text-center">
         <h2 class="text-gray">Log In</h2>
       </div>
       <div class="col-12 text-center">
-        <h4 class="text-gray">to start using AntiConv</h4>
+        <h4 class="text-gray">për tu kyqur në AntiConv</h4>
       </div>
     </div>
     <form (ngSubmit)="login()" [formGroup]="userLoginForm" class="align-self-center w-100 container-fluid mt-3">
       <div class=" row m-auto">
         <div class="col-12 px-0 pb-2">
           <mat-form-field class="example-full-width w-100">
-            <mat-label>Email*</mat-label>
-            <input formnovalidate matInput placeholder="Enter your username" formControlName="email">
-            <mat-error *ngIf="userLoginForm.get('email').hasError('required')">
-              Username is <strong>required</strong>
+            <mat-label>Emaili*</mat-label>
+            <input formnovalidate matInput placeholder="Shkruani emailin tuaj" formControlName="user_email_address">
+            <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">
+              Shkruani <strong>emailin</strong>
             </mat-error>
-            <mat-error *ngIf="!userLoginForm.get('email').hasError('required') &&  userLoginForm.get('email').hasError('email')">
-              Please write a correct <strong>email</strong>
+            <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">
+              Shkruani formatin e sakte per<strong>email</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col-12 px-0 pb-2">
           <mat-form-field class="example-full-width w-100">
-            <mat-label>Password*</mat-label>
-            <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="password">
-            <mat-error *ngIf="userLoginForm.get('password').hasError('required')">
-              Password is <strong>required</strong>
+            <mat-label>Fjalkalimi*</mat-label>
+            <input formnovalidate matInput type="password" placeholder="Shkruaj Fjalkalimin" formControlName="user_password">
+            <mat-error *ngIf="userLoginForm.get('user_password').hasError('required')">
+              Shkruani <strong>fjalkalimin</strong>
             </mat-error>
           </mat-form-field>
         </div>
       </div>
       <div class="row  pt-2">
         <div class="col d-flex" style="max-width: 280px">
-          <h4 class="text-gray font-500">If you cannot log in please contact us in this <a class="text-link"
+          <h4 class="text-gray font-500">Nëse nuk mund të kyqeni ju lutemi na shkruani në <a class="text-link"
                                                                                            href="mailto:support@anticonv.com">email</a>
           </h4>
         </div>
       </div>
       <div class="row  pt-4">
         <div class="col d-flex">
-          <span class="forgot-password mx-0 align-self-center">Forgot password?</span>
+          <span class="forgot-password mx-0 align-self-center">Keni harruar fjalkalimin?</span>
         </div>
         <div class="col-auto">
           <button mat-raised-button color="primary" (submit)="login()" [disabled]="!userLoginForm.valid">Log In
