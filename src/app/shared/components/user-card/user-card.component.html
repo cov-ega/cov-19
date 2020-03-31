@@ -1,0 +1,59 @@
+<div class="user-card-container pl-2 pr-2 pt-2 pb-2">
+  <div class="user-card min-h-470">
+    <div class="user-details ml-1 pt-3 pb-3">
+      <div class="col-12">
+          <h2>{{user['user_name']}} {{user['user_surname']}}</h2>
+          <h5 style="color: lightslategray">{{user.address_street}}, {{user.address_city}}</h5>
+      </div>
+    </div>
+    <div *ngIf="user['is_loading']" class="min-h-414 w-100 d-flex">
+      <mat-spinner class="margin-auto align-self-center"></mat-spinner>
+    </div>
+    <div *ngIf="!user['is_loading']"  class="user-image border-radius-4px min-h-414"  [ngStyle]="{background: 'url(' + user.user_profile_image + ') center center'}" >
+      <section *ngIf="!user.has_been_changed">
+        <div class="col-12 user-image-top" *ngIf="isFeed">
+          <div class="button-family-container text-right pt-3">
+            <button mat-flat-button color="" (click)="isFamilyMember(user.id)">
+              <mat-icon>favorite_border</mat-icon>
+              Familjar
+            </button>
+          </div>
+        </div>
+        <div class="col-12 user-image-bottom h-362 d-flex" *ngIf="isFeed">
+          <div class="flex-end w-100">
+            <div class="user-image-info">
+              <h2 class="pb-3" style="color: lightslategray">
+                A e keni takuar Filan Fisteku gjate ketij muaji?
+              </h2>
+            </div>
+            <div>
+              <div class="user-image-action-buttons d-flex pb-3">
+                <div class="col pl-0 pr-2">
+                  <button mat-flat-button color="primary" class="w-100" (click)="hasMeetUser(user.id)">
+                    <mat-icon>check</mat-icon>
+                    PO
+                  </button>
+                </div>
+                <div class="col pl-2 pr-0">
+                  <button mat-flat-button color="warn" class="w-100" style="font-weight: bold" (click)="hasNotMeetUser(user.id)">
+                    <mat-icon>clear</mat-icon>
+                    JO
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <section  *ngIf="user.has_been_changed">
+        <div class="col-12 pl-0 pr-0 user-image-bottom min-h-414 d-flex ">
+          <div class="pl-3 pr-3 flex-end w-100 pt-4 pb-4 text-center user-state-container" [style.background-color]="user.response_color">
+            <h2 style="color: white">{{user.change_message}}</h2>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>

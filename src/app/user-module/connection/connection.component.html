@@ -1,6 +1,39 @@
-<p>connection works!</p>
-<h1>Connection</h1>
-<pre>{{connections | json}}</pre>
-<h1>Family Member</h1>
-<pre>{{familyMembers | json}}</pre>
+<mat-tab-group animationDuration="0ms" class="connection-tabs-container">
+  <mat-tab label="Takimet e mia">
+    <div class="container pl-2 pr-2">
+      <div class="col-12">
+        <div class="row pt-3">
+          <user-card
+            *ngFor="let u of user"
+            [isFeed]="isFeed"
+            [user]="u"
+            (isFamilyMemberEvent)="isFamilyMember($event)"
+            (hasMeetUserEvent)="hasMeetUser($event)"
+            (hasNotMeetUserEvent)="hasNotMeetUser($event)"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 pl-0 pr-0">
+          </user-card>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Familja Ime">
+    <div class="container pl-2 pr-2">
+      <div class="col-12">
+        <div class="row pt-3">
+          <user-card
+            *ngFor="let u of user"
+            [isFeed]="isFeed"
+            [user]="u"
+            (isFamilyMemberEvent)="isFamilyMember($event)"
+            (hasMeetUserEvent)="hasMeetUser($event)"
+            (hasNotMeetUserEvent)="hasNotMeetUser($event)"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 pl-0 pr-0">
+          </user-card>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
 

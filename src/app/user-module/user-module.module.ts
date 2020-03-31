@@ -5,13 +5,17 @@ import { UserRoutingModule } from './user-module-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ConnectionComponent } from './connection/connection.component';
 import { ProfileComponent } from './profile/profile.component';
+import {SharedModule} from '../shared/shared.module';
+import {MaterialModule} from '../shared/material-module/material/material.module';
 
 
 @NgModule({
   declarations: [DashboardComponent, ConnectionComponent, ProfileComponent],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    SharedModule,
+    MaterialModule
   ]
 })
 export class UserModule { }
