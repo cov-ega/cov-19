@@ -4,13 +4,22 @@
       <img src={{logo}} class="img-fluid" style="height: 48px;width: 48px" alt="" [routerLink]="['']">
     </div>
     <div class="col-auto align-self-center" *ngIf="menu && menu.length != 0">
-      {{menu | json}}
+      <div class="row">
+        <div class="col-auto px-0" *ngFor="let item of menu" [routerLink]="[item['name']]">
+          <div class="h-52 d-flex px-3">
+            <i class="material-icons align-self-center" [routerLinkActive]="['fill-icon-blue']">{{item['icon']}}</i>
+          </div>
+          <div class="h-5"  [routerLinkActive]="['fill-blue']"></div>
+        </div>
+      </div>
     </div>
     <div class="col-auto align-self-center margin-right d-flex" *ngIf="rightButtons && rightButtons.length != 0">
       <div *ngFor="let button of rightButtons">
         <button mat-raised-button class="ml-1" *ngIf="button['type'] == 'raised'"   [color]="button['color']" [routerLink]="[button['name']]">{{button['name'] | titlecase}}</button>
         <button mat-button class="ml-1" *ngIf="button['type'] == '' || button['type'] == 'normal'"   [color]="button['color']" [routerLink]="[button['name']]">{{button['name'] | titlecase}}</button>
       </div>
+    </div>
+    <div class="col align-self-center margin-right d-flex mobile-none" *ngIf="rightButtons && rightButtons.length == 0">
     </div>
   </div>
 </div>

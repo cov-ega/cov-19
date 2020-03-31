@@ -26,6 +26,12 @@ link{
     outline: none;
   }
 }
+div{
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
 
 
 .cursor-pointer {
