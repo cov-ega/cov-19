@@ -14,6 +14,8 @@ import {NavbarComponent} from './shared/components/navbar/navbar.component';
 import {MaterialModule} from './shared/material-module/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SlidePanelComponent} from './signup/slide-panel';
+import { ErrorNotFoundComponent } from './errors/error-not-found/error-not-found.component';
+import {LottieAnimationViewModule} from 'ng-lottie';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {SlidePanelComponent} from './signup/slide-panel';
     SignupComponent,
     HomePageComponent,
     NavbarComponent,
-    SlidePanelComponent
+    SlidePanelComponent,
+    ErrorNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {SlidePanelComponent} from './signup/slide-panel';
     SharedModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LottieAnimationViewModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

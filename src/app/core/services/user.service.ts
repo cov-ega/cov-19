@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {AuthService} from './auth.service';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 
 const user = {
   id: 1,
@@ -26,8 +28,8 @@ const user = {
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  constructor(private http: HttpClient) {
+export class UserService implements CanActivate {
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {
   }
 
   getUserData() {
@@ -37,8 +39,22 @@ export class UserService {
   login(userData) {
     console.log(userData);
   }
+
   signup(userData) {
-    console.log(userData)
+    console.log(userData);
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    let url: string = state.url;
+    return this.verifyLogin(url);
+  }
+
+  verifyLogin(url: string) {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
   }
 
 
