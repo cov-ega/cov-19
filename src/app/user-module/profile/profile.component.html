@@ -1,192 +1,317 @@
 <div class="container pt-4">
   <div class="row">
-    <div class="col-12">
-      <mat-card class="example-card">
-        <mat-card-header class="ml-0 mr-0">
-          <mat-card-title >Personal Information:</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+    <div class="col-12 shadow-8dp border-radius-8px shadow-none-m pt-3">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4">
           <div class="row">
-            <div class="col-auto">
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
-            </div>
-            <div class="col">
-              <div class="row"></div>
+            <div class="col-auto pb-4 margin-auto">
+                <div class="image-container margin-auto" [ngStyle]="{background: 'url(' + userProfile.user_profile_image + ')'}" >
+                </div>
+                <div class="upload-image-container transition-basic shadow-8dp">
+                    <span class="material-icons">camera_alt</span>
+                </div>
             </div>
           </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary">Save</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row pt-4">
-    <div class="col-sm-8 col-12">
-      <div class="row">
-        <div class="col-auto">
-          <div class="image">
-            <img [src]="userProfile.user_profile_image" class="img-thumbnail border-radius-50" alt="User profile image">
+          <div class="row pt-3 text-primary">
+            <div class="col border-right">
+              <h3 class="text-center">Kontakte</h3>
+              <h5 class="text-center">13</h5>
+            </div>
+            <div class="col border-right text-primary">
+              <h3 class="text-center">Statusi</h3>
+              <h5 class="text-center">Shendetshem</h5>
+            </div>
+            <div class="col text-primary">
+              <h3 class="text-center">Familijar</h3>
+              <h5 class="text-center">24</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col pt-3 pb-3 pt-4 text-center">
+              <h5 class="pb-2 text-primary">Gjendja e juaj shendetsore:</h5>
+              <mat-button-toggle-group name="userHealthStatus" aria-label="Gjendja Personit">
+                <mat-button-toggle value="0" style="font-size: 14px; font-weight: bold">Shendetshem</mat-button-toggle>
+                <mat-button-toggle value="1" style="font-size: 14px; font-weight: bold" >Simptomatik</mat-button-toggle>
+                <mat-button-toggle value="2" style="font-size: 14px; font-weight: bold">Diagnostifikuar</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
           </div>
         </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-12">
-              <h3>Kontaktet e juaja: <span class="font-500">50</span></h3>
-            </div>
-            <div class="col-12">
-              <h3>Familja juaj: <span class="font-500">50</span></h3>
-            </div>
-            <div class="col-12">
-              <h3>Kam udhetuar gjate 15 diteve jashte vendit: <span class="font-500">PO</span></h3>
-            </div>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-12">
-                  <p>Gjendja juaj shendetesore</p>
-                </div>
-                <div class="col-12">
-                  <div class="example-selected-value">Selected value: {{group.value}}</div>
-                </div>
-                <div class="col-12">
-                  <mat-button-toggle-group #group="matButtonToggleGroup">
-                    <mat-button-toggle value="Normale" aria-label="Text align left" class="d-flex">
-                      <h3>Normale</h3>
-                    </mat-button-toggle>
-                    <mat-button-toggle value="Kam Simptoma" aria-label="Text align center">
-                      <h3>Kam Simptoma</h3>
-                    </mat-button-toggle>
-                    <mat-button-toggle value="I Diagnostifikuar" aria-label="Text align right">
-                      <h3>I Diagnostifikuar</h3>
-                    </mat-button-toggle>
-                  </mat-button-toggle-group>
+        <div class="col pb-3 border-left border-left-m-none">
+          <div class="row" [formGroup]="userInfo">
+              <div class="col-12 pb-3">
+                <h2 class="text-gray text-primary text-center p-m-t-4">Edit User Profile Info</h2>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Emri*</mat-label>
+                  <input formnovalidate matInput placeholder="Shkruani emrin tuaj" formControlName="user_name">
+                  <mat-error *ngIf="userInfo.get('user_name').hasError('required') && userInfo.get('user_name').hasError('minLength')">
+                    Emri eshte i <strong>detyrushem</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Mbiemri*</mat-label>
+                  <input formnovalidate matInput type="text" placeholder="Shkruani mbiemrin tuaj" formControlName="user_surname">
+                  <mat-error *ngIf="userInfo.get('user_surname').hasError('required')">
+                    Mbiemri eshte i <strong>detyrushem</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Emaili*</mat-label>
+                  <input formnovalidate matInput type="text" placeholder="Shkruani emailin tuaj" formControlName="user_email_address">
+                  <mat-error *ngIf="userInfo.get('user_email_address').hasError('required')">
+                    Emaili ehste i <strong>detyrushem</strong>
+                  </mat-error>
+                  <mat-error *ngIf="!userInfo.get('user_email_address').hasError('required') &&  userInfo.get('user_email_address').hasError('email')">
+                    Shkruani formatin e sakte te <strong>emailit</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Password*</mat-label>
+                  <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="user_password">
+                  <mat-error *ngIf="userInfo.get('user_password').hasError('required')">
+                    Fjalkalimi eshte i <strong>detyrushem</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Telefoni (Opsional)</mat-label>
+                  <input formnovalidate matInput type="number" placeholder="Shkruani numrin e telefonit" formControlName="user_phone_number">
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Data e Lindjes</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="user_birthday" placeholder="mm/dd/yyyy">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Nr. Leternjofitmi (opcionale)</mat-label>
+                  <input formnovalidate matInput type="number" placeholder="Enter you personal ID" formControlName="user_personal_id">
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Selekto Shtetin</mat-label>
+                  <mat-select [(value)]="selectedCountry" formControlName="address_country" >
+                    <mat-option value="Kosovo">Kosovo</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Zgjedh Qytetin</mat-label>
+                  <mat-select formControlName="address_city" >
+                    <mat-option *ngFor="let city of cities" [value]="city.value">
+                      {{city.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Zgjedh Lagjen</mat-label>
+                  <mat-select formControlName="address_street" >
+                    <mat-option *ngFor="let lagjet of lagjet" [value]="lagjet.value">
+                      {{lagjet.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-lg-6  pb-2">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Vizita e fundit jashte shtetit</mat-label>
+                  <input matInput [matDatepicker]="picker1" formControlName="user_last_travel_date" >
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-12 pb-2 text-right">
+                <button class="margin-right w-100-m" mat-raised-button color="primary">Save</button>
+              </div>
+          </div>
+        </div>
+        <div class="col-12 pt-4 pb-4 border-top bg-gray">
+                <div>
+                  <button mat-raised-button color="warn" class="w-100-m" (click)="logOut()">Log Out</button>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row"></div>
-          <div class="row"></div>
-        </div>
-        <div class="col-12">
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-<!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-<!--                  Shkruani <strong>emailin</strong>-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-<!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-<!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-<!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-<!--                  Shkruani <strong>emailin</strong>-->
-<!--                </mat-error>-->
-<!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-<!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-<!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-                <!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-                <!--                  Shkruani <strong>emailin</strong>-->
-                <!--                </mat-error>-->
-                <!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-                <!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-                <!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-                <!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-                <!--                  Shkruani <strong>emailin</strong>-->
-                <!--                </mat-error>-->
-                <!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-                <!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-                <!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-                <!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-                <!--                  Shkruani <strong>emailin</strong>-->
-                <!--                </mat-error>-->
-                <!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-                <!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-                <!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-                <!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-                <!--                  Shkruani <strong>emailin</strong>-->
-                <!--                </mat-error>-->
-                <!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-                <!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-                <!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-                <!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-                <!--                  Shkruani <strong>emailin</strong>-->
-                <!--                </mat-error>-->
-                <!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-                <!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-                <!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field  class="example-full-width w-100">
-                <mat-label>Emaili*</mat-label>
-                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >
-                <!--                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">-->
-                <!--                  Shkruani <strong>emailin</strong>-->
-                <!--                </mat-error>-->
-                <!--                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">-->
-                <!--                  Shkruani formatin e sakte per<strong>email</strong>-->
-                <!--                </mat-error>-->
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p>profile works!</p>
-      <h1>User Profile</h1>
-      <pre>{{userProfile | json}}</pre>
-    </div>
-    <div class="col-12 col-sm-4">
-      <div class="">
-        <button mat-raised-button color="warn" class="w-100" (click)="logOut()">Log Out</button>
       </div>
     </div>
   </div>
 </div>
+
+
+<!--<div class="container">-->
+<!--  <div class="row pt-4">-->
+<!--    <div class="col-sm-8 col-12">-->
+<!--      <div class="row">-->
+<!--        <div class="col-auto">-->
+<!--          <div class="image">-->
+<!--            <img [src]="userProfile.user_profile_image" class="img-thumbnail border-radius-50" alt="User profile image">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--          <div class="row">-->
+<!--            <div class="col-12">-->
+<!--              <h3>Kontaktet e juaja: <span class="font-500">50</span></h3>-->
+<!--            </div>-->
+<!--            <div class="col-12">-->
+<!--              <h3>Familja juaj: <span class="font-500">50</span></h3>-->
+<!--            </div>-->
+<!--            <div class="col-12">-->
+<!--              <h3>Kam udhetuar gjate 15 diteve jashte vendit: <span class="font-500">PO</span></h3>-->
+<!--            </div>-->
+<!--            <div class="col-12">-->
+<!--              <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                  <p>Gjendja juaj shendetesore</p>-->
+<!--                </div>-->
+<!--                <div class="col-12">-->
+<!--                  <div class="example-selected-value">Selected value: {{group.value}}</div>-->
+<!--                </div>-->
+<!--                <div class="col-12">-->
+<!--                  <mat-button-toggle-group #group="matButtonToggleGroup">-->
+<!--                    <mat-button-toggle value="Normale" aria-label="Text align left" class="d-flex">-->
+<!--                      <h3>Normale</h3>-->
+<!--                    </mat-button-toggle>-->
+<!--                    <mat-button-toggle value="Kam Simptoma" aria-label="Text align center">-->
+<!--                      <h3>Kam Simptoma</h3>-->
+<!--                    </mat-button-toggle>-->
+<!--                    <mat-button-toggle value="I Diagnostifikuar" aria-label="Text align right">-->
+<!--                      <h3>I Diagnostifikuar</h3>-->
+<!--                    </mat-button-toggle>-->
+<!--                  </mat-button-toggle-group>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="row"></div>-->
+<!--          <div class="row"></div>-->
+<!--        </div>-->
+<!--        <div class="col-12">-->
+<!--          <div class="row">-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--&lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--&lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-6">-->
+<!--              <mat-form-field  class="example-full-width w-100">-->
+<!--                <mat-label>Emaili*</mat-label>-->
+<!--                <input formnovalidate matInput placeholder="Shkruani emailin tuaj" >-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani <strong>emailin</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Shkruani formatin e sakte per<strong>email</strong>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </mat-error>&ndash;&gt;-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>profile works!</p>-->
+<!--      <h1>User Profile</h1>-->
+<!--      <pre>{{userProfile | json}}</pre>-->
+<!--    </div>-->
+<!--    <div class="col-12 col-sm-4">-->
+<!--      <div class="">-->
+<!--        <button mat-raised-button color="warn" class="w-100" (click)="logOut()">Log Out</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 

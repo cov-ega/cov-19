@@ -7,6 +7,7 @@ import { ConnectionComponent } from './connection/connection.component';
 import { ProfileComponent } from './profile/profile.component';
 import {SharedModule} from '../shared/shared.module';
 import {MaterialModule} from '../shared/material-module/material/material.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import {MaterialModule} from '../shared/material-module/material/material.module
     CommonModule,
     UserRoutingModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

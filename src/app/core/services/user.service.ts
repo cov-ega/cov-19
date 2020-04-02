@@ -19,7 +19,7 @@ const user = {
   address_street: 'Preng Doci',
   address_city: 'Prishtine',
   address_country: 'Kosova',
-  user_profile_image: '../../../assets/user_placeholder.png',
+  user_profile_image: '../../../assets/profile-image.png',
   user_last_travel_date: new Date(),
   user_terms_agreement: true,
 
