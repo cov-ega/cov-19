@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {Constants} from '../../constants';
 
 const user = {
   id: 1,
@@ -33,12 +34,31 @@ export class UserService implements CanActivate {
   }
 
   getUserData() {
+
     return user;
   }
 
   login(userData) {
-    console.log(userData);
+
+    debugger;
+
+    this.http.post('https://api-anticov19.azurewebsites.net/api/Authentication/tokens/users/generate', {
+      applicationToken: 'AntiCovClient',
+      userEmailAddress: 'eneshoxha@outlook.com',
+      userPassword: '12345678',
+      dateLogin: '2020-04-02T14:47:55.938Z'
+    }).subscribe({
+      next: data => console.log(data),
+      error: error => console.error('There was an error!', error)
+    });
+    //
+    //
+    // this.http.get('http://api-anticov19.azurewebsites.net/api/v1/Users').subscribe({
+    //   next: data => console.log(data),
+    //   error: error => console.error('There was an error!', error)
+    // });
   }
+
 
   signup(userData) {
     console.log(userData);

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {Constants} from '../../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 @Injectable()
 export class AuthService {
   isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
+
 
   /**
    *
@@ -31,6 +33,7 @@ export class AuthService {
     localStorage.setItem('token', 'JWT');
     localStorage.setItem('user', user);
     this.isLoginSubject.next(true);
+
   }
 
   /**

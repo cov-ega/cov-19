@@ -16,6 +16,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SlidePanelComponent} from './signup/slide-panel';
 import { ErrorNotFoundComponent } from './errors/error-not-found/error-not-found.component';
 import {LottieAnimationViewModule} from 'ng-lottie';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './core/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {LottieAnimationViewModule} from 'ng-lottie';
     ReactiveFormsModule,
     LottieAnimationViewModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
