@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 export class AppComponent {
   title = 'covid19';
   navbar: any;
+  currentDate = new Date().toISOString();
 
   constructor(public authService: AuthService) {
     this.initialize();

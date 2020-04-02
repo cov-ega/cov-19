@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Constants} from '../../constants';
-
 @Injectable({
   providedIn: 'root'
 })

@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Constants} from '../../constants';
+import {APP_CONFIG, IAppConfig} from '../../app.config';
 
 const user = {
   id: 1,
@@ -30,7 +30,12 @@ const user = {
   providedIn: 'root'
 })
 export class UserService implements CanActivate {
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+    @Inject(APP_CONFIG) private config: IAppConfig
+  ) {
   }
 
   getUserData() {
@@ -42,21 +47,21 @@ export class UserService implements CanActivate {
 
     debugger;
 
-    this.http.post('https://api-anticov19.azurewebsites.net/api/Authentication/tokens/users/generate', {
-      applicationToken: 'AntiCovClient',
-      userEmailAddress: 'eneshoxha@outlook.com',
-      userPassword: '12345678',
-      dateLogin: '2020-04-02T14:47:55.938Z'
+    this.http.post(this.config.apiEndpoint + 'api/Authentication/tokens/users/generate', {
+      applicationToken : "AntiCovClient",
+      emailAddress: "eneshoxha@outlook.com",
+      password: "12345678",
+      dateLogin: "2020-04-02T14:56:43.633Z"
     }).subscribe({
       next: data => console.log(data),
       error: error => console.error('There was an error!', error)
     });
-    //
-    //
-    // this.http.get('http://api-anticov19.azurewebsites.net/api/v1/Users').subscribe({
-    //   next: data => console.log(data),
-    //   error: error => console.error('There was an error!', error)
-    // });
+
+
+    this.http.get('http://dummy.restapiexample.com/api/v1/employees').subscribe({
+      next: data => console.log(data),
+      error: error => console.error('There was an error!', error)
+    });
   }
 
 

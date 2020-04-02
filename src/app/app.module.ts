@@ -18,6 +18,7 @@ import { ErrorNotFoundComponent } from './errors/error-not-found/error-not-found
 import {LottieAnimationViewModule} from 'ng-lottie';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './core/interceptor/auth.interceptor';
+import {APP_CONFIG, AppConfig} from './app.config';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {AuthInterceptor} from './core/interceptor/auth.interceptor';
     LottieAnimationViewModule.forRoot()
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: APP_CONFIG, useValue: AppConfig }
   ],
   bootstrap: [AppComponent]
 })
