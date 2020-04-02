@@ -12,7 +12,7 @@
 }
 .user-card{
   border-radius: 8px;
-  border: 1px solid gray;
+  //border: 1px solid gray;
 }
 .flex-end{
   align-self: flex-end;
@@ -20,10 +20,13 @@
 .user-state-container{
   opacity: 0.9;
   border-radius: 8px;
-  border-top-left-radius: 4px!important;
-  border-top-right-radius: 4px!important;
-  -moz-border-radius-topleft: 4px!important;
-  -moz-border-radius-topright: 4px!important;
+  border-top-left-radius: 0px!important;
+  border-top-right-radius: 0px!important;
+  -moz-border-radius-topleft: 0px!important;
+  -moz-border-radius-topright: 0px!important;
   color: white;
 
+}
+.text-white{
+  color: white;
 }

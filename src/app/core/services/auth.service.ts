@@ -18,6 +18,12 @@ export class AuthService {
     return this.isLoginSubject.asObservable();
   }
 
+  //TODO: verify implementation of this method
+  isLoggedInUser() {
+    return this.isLoginSubject.getValue();
+  }
+
+
   /**
    *  Login the user then tell all the subscribers about the new status
    */

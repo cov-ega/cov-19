@@ -50,7 +50,7 @@ export class UserService implements CanActivate {
   }
 
   verifyLogin(url: string) {
-    if (this.authService.isLoggedIn()) {
+    if (this.authService.isLoggedInUser()) {
       return true;
     }
     this.router.navigate(['/login']);

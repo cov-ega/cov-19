@@ -23,6 +23,9 @@ const connections = [{
   user_profile_image: '../../../assets/user_placeholder.png',
   user_last_travel_date: new Date(),
   user_terms_agreement: true,
+
+
+
   is_loading: false,
   has_been_changed: false,
   change_message: 'Ju keni thene qe keni takuar Filan Fistekun'
