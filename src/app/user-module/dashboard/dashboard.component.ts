@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DashboardService} from '../services/dashboard.service';
+import {IUser} from '../../core/models/user.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,20 +8,33 @@ import {DashboardService} from '../services/dashboard.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  nearByUserList: Array<any>;
-  isFeed =  true;
+  nearByUserList: Array<IUser>;
+  isFeed = true;
   index: number;
-  user: any
-  constructor(private dashboardService: DashboardService) { }
+  user: any;
 
-  ngOnInit() {
-    console.log(this.dashboardService.getNearbyUserList());
-    this.user = this.dashboardService.getNearbyUserList()
-    this.nearByUserList = this.dashboardService.getNearbyUserList();
+  constructor(private dashboardService: DashboardService) {
   }
 
+  ngOnInit() {
+    this.initialize();
+
+  }
+
+  initialize() {
+    this.dashboardService.getNearbyUserList().subscribe(
+      data => {
+        this.nearByUserList = data;
+      },
+      error => {
+        alert(error.title + '' + error.status);
+      }
+    );
+  }
+
+
   isFamilyMember(userId) {
-    this.index = this.user.findIndex(obj => obj.id === userId)
+    this.index = this.user.findIndex(obj => obj.id === userId);
     this.user[this.index].is_loading = true;
     setTimeout(() => {
       this.user[this.index].is_loading = false;
@@ -29,8 +43,9 @@ export class DashboardComponent implements OnInit {
       this.user[this.index].change_message = 'Ky user eshte anetar i familjes tuaj';
     }, 1000);
   }
+
   hasMeetUser(userId) {
-    this.index = this.user.findIndex(obj => obj.id === userId)
+    this.index = this.user.findIndex(obj => obj.id === userId);
     this.user[this.index].is_loading = true;
     setTimeout(() => {
       this.user[this.index].is_loading = false;
@@ -39,8 +54,9 @@ export class DashboardComponent implements OnInit {
       this.user[this.index].change_message = 'Ju keni thene qe keni takuar Filan Fistekun';
     }, 1000);
   }
+
   hasNotMeetUser(userId) {
-    this.index = this.user.findIndex(obj => obj.id === userId)
+    this.index = this.user.findIndex(obj => obj.id === userId);
     this.user[this.index].is_loading = true;
     setTimeout(() => {
       this.user[this.index].is_loading = false;

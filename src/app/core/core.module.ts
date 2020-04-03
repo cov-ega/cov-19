@@ -11,11 +11,6 @@ import {UserService} from './services/user.service';
   declarations: [],
   exports: [],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
     UserService,
   ],
   imports: [

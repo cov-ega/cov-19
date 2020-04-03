@@ -4,10 +4,10 @@ import {Observable} from 'rxjs';
 
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class AddHeaderInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const jsonReq: HttpRequest<any> = req.clone({
-      setHeaders: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', Authorization: localStorage.getItem('token') || ''}}
+      setHeaders: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'}}
     );
     return next.handle(jsonReq);
     console.log('interceptor activated');

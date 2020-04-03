@@ -44,20 +44,21 @@ export class UserService implements CanActivate {
   }
 
   login(userData) {
+    debugger;
     this.http.post(this.config.apiEndpoint + 'api/Authentication/tokens/users/generate', {
       applicationToken : this.config.applicationToken,
       emailAddress: userData.userEmailAddress,
       password: userData.userPassword,
       dateLogin: new Date().toISOString()
-    }).subscribe({
-      next: data => {
+    }).subscribe(
+      data => {
         this.authService.login(data);
         this.router.navigate(['user/dashboard']);
       },
-      error: error => {
+      error => {
         alert(error.title + ' ' + error.status);
       }
-    });
+    );
 
 
     // this.http.get('http://dummy.restapiexample.com/api/v1/employees').subscribe({

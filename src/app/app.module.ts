@@ -19,6 +19,7 @@ import {LottieAnimationViewModule} from 'ng-lottie';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './core/interceptor/auth.interceptor';
 import {APP_CONFIG, AppConfig} from './app.config';
+import {AddHeaderInterceptor} from './core/interceptor/addHeader.interceptor';
 
 @NgModule({
   declarations: [
