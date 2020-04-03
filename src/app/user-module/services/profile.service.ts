@@ -27,7 +27,7 @@ export class ProfileService {
   }
 
   updateUserProfile(user): Observable<any>  {
-    return this.http.patch<IUser>('api/v1/Users/' + localStorage.getItem('userId'), user);
+    return this.http.patch<IUser>(this.config.apiEndpoint + 'api/v1/Users/' + localStorage.getItem('userId'), user);
   }
 
   editProfileInfo() {

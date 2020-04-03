@@ -23,14 +23,17 @@ export class ProfileComponent implements OnInit {
   userInfo: FormGroup;
   user: IUser;
   userAddress: any;
-  selectedCountry = 'Kosovo';
+  countries: Array<any> = [
+    {value: 'Kosova', viewValue: 'Kosova'},
+    {value: 'Shqiperia', viewValue: 'Shqiperia'},
+  ];
   cities: Array<any> = [
-    {value: 'Prishtine', viewValue: 'Prishtine'},
+    {value: 'Prishtina', viewValue: 'Prishtina'},
     {value: 'Podujeve', viewValue: 'Podujeve'},
     {value: 'Skenderaj', viewValue: 'Skenderaj'}
   ];
   lagjet: Array<any> = [
-    {value: 'Prishtine', viewValue: 'Prishtine'},
+    {value: 'Tirana', viewValue: 'Tirana'},
     {value: 'Podujeve', viewValue: 'Podujeve'},
     {value: 'Skenderaj', viewValue: 'Skenderaj'}
   ];
@@ -80,6 +83,10 @@ export class ProfileComponent implements OnInit {
   logOut() {
     this.authService.logout();
     this.router.navigateByUrl('');
+  }
+
+  fileChangeEvent(fileInput: any) {
+    debugger;
   }
 
 

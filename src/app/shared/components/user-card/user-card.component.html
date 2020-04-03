@@ -6,10 +6,10 @@
 <!--          <h5 style="color: lightslategray">{{user.address_street}}, {{user.address_city}}</h5>-->
       </div>
     </div>
-    <div *ngIf="user['is_loading']" class="min-h-414 w-100 d-flex">
+    <div *ngIf="user['isLoading']" class="min-h-414 w-100 d-flex">
       <mat-spinner class="margin-auto align-self-center"></mat-spinner>
     </div>
-    <div *ngIf="!user['is_loading']"  class="user-image min-h-414"  [ngStyle]="{backgroundImage: 'linear-gradient(0deg, rgb(0, 0, 0,3) 5%, rgba(0, 0, 0, 0.7) 25%, rgba(255, 255, 255, 0) 35%),url(' + user['userProfileImage'] + ')'}" >
+    <div *ngIf="!user['isLoading']"  class="user-image min-h-414"  [ngStyle]="{backgroundImage: 'linear-gradient(0deg, rgb(0, 0, 0,3) 5%, rgba(0, 0, 0, 0.7) 25%, rgba(255, 255, 255, 0) 35%),url(' + user['userProfileImage'] + ')'}" >
       <section *ngIf="!user.hasBeenChanged">
         <div class="col-12 user-image-top" *ngIf="isFeed">
           <div class="button-family-container text-right pt-3">

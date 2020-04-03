@@ -5,6 +5,7 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4">
           <div class="row">
             <div class="col-auto pb-4 margin-auto">
+              <input type="file" (change)="fileChangeEvent($event)" class="image-uploader-input">
                 <div class="image-container margin-auto" [ngStyle]="{background: 'url(' + profileImg + ')'}" >
                 </div>
                 <div class="upload-image-container transition-basic shadow-8dp">
@@ -101,14 +102,16 @@
                   <input formnovalidate matInput type="number" placeholder="Enter you personal ID" formControlName="userPersonalId">
                 </mat-form-field>
               </div>
-              <div class="col-12 col-lg-6  pb-2">
-                <mat-form-field class="example-full-width w-100">
-                  <mat-label>Selekto Shtetin</mat-label>
-                  <mat-select [(value)]="selectedCountry" formControlName="addressCountry" >
-                    <mat-option value="Kosovo">Kosovo</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
+            <div class="col-12 col-lg-6  pb-2">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Zgjedh Qytetin</mat-label>
+                <mat-select formControlName="addressCountry" >
+                  <mat-option *ngFor="let country of countries" [value]="country.value">
+                    {{country.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
               <div class="col-12 col-lg-6  pb-2">
                 <mat-form-field class="example-full-width w-100">
                   <mat-label>Zgjedh Qytetin</mat-label>

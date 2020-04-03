@@ -36,17 +36,21 @@ export class DashboardComponent implements OnInit {
     debugger;
     this.index = this.nearByUserList.findIndex(obj => obj.userId === userId);
     this.nearByUserList[this.index].isLoading = true;
-    this.nearByUserList[this.index].isLoading = false;
-    this.nearByUserList[this.index].hasBeenChanged = true;
-    this.nearByUserList[this.index].responseColor = '#a2c9aa';
-    this.nearByUserList[this.index].changeMessage = this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname + ' eshte anetar if familjes tuaj';
+    this.dashboardService.addFamilyMember(
+      (data => {
+        this.nearByUserList[this.index].isLoading = false;
+        this.nearByUserList[this.index].hasBeenChanged = true;
+        this.nearByUserList[this.index].responseColor = '#a2c9aa';
+        this.nearByUserList[this.index].changeMessage = this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname + ' eshte anetar if familjes tuaj';
+      }),
+    );
   }
 
   hasMeetUser(userId) {
+    this.index = this.nearByUserList.findIndex(obj => obj.userId === userId);
+    this.nearByUserList[this.index].isLoading = true;
     this.dashboardService.addConnection(userId).subscribe(
       (data => {
-        this.index = this.nearByUserList.findIndex(obj => obj.userId === userId);
-        this.nearByUserList[this.index].isLoading = true;
         this.nearByUserList[this.index].isLoading = false;
         this.nearByUserList[this.index].hasBeenChanged = true;
         this.nearByUserList[this.index].responseColor = '#909eb4';
