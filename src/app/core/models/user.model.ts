@@ -1,4 +1,5 @@
 export interface IUser {
+  response_color: string;
   userId: number;
   userName?: string;
   userSurname?: string;
@@ -19,4 +20,5 @@ export interface IUser {
   isLoading?: boolean;
   hasBeenChanged?: boolean;
   changeMessage?: string;
+  responseColor?: string;
 }

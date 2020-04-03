@@ -33,36 +33,41 @@ export class DashboardComponent implements OnInit {
 
 
   isFamilyMember(userId) {
-    // this.index = this.user.findIndex(obj => obj.id === userId);
-    // this.user[this.index].is_loading = true;
-    // setTimeout(() => {
-    //   this.user[this.index].is_loading = false;
-    //   this.user[this.index].has_been_changed = true;
-    //   this.user[this.index].response_color = '#a2c9aa';
-    //   this.user[this.index].change_message = 'Ky user eshte anetar i familjes tuaj';
-    // }, 1000);
+    debugger;
+    this.index = this.nearByUserList.findIndex(obj => obj.userId === userId);
+    this.nearByUserList[this.index].isLoading = true;
+    this.nearByUserList[this.index].isLoading = false;
+    this.nearByUserList[this.index].hasBeenChanged = true;
+    this.nearByUserList[this.index].responseColor = '#a2c9aa';
+    this.nearByUserList[this.index].changeMessage = this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname + ' eshte anetar if familjes tuaj';
   }
 
   hasMeetUser(userId) {
-    // this.index = this.user.findIndex(obj => obj.id === userId);
-    // this.user[this.index].is_loading = true;
-    // setTimeout(() => {
-    //   this.user[this.index].is_loading = false;
-    //   this.user[this.index].has_been_changed = true;
-    //   this.user[this.index].response_color = '#909eb4';
-    //   this.user[this.index].change_message = 'Ju keni thene qe keni takuar Filan Fistekun';
-    // }, 1000);
+    this.dashboardService.addConnection(userId).subscribe(
+      (data => {
+        this.index = this.nearByUserList.findIndex(obj => obj.userId === userId);
+        this.nearByUserList[this.index].isLoading = true;
+        this.nearByUserList[this.index].isLoading = false;
+        this.nearByUserList[this.index].hasBeenChanged = true;
+        this.nearByUserList[this.index].responseColor = '#909eb4';
+        this.nearByUserList[this.index].changeMessage = 'Ju keni thene qe keni takuar ' + this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname;
+      }),
+      (error => {
+        alert(error.title + ' ' + error.status);
+      })
+    );
+
   }
 
   hasNotMeetUser(userId) {
-    // this.index = this.user.findIndex(obj => obj.id === userId);
-    // this.user[this.index].is_loading = true;
-    // setTimeout(() => {
-    //   this.user[this.index].is_loading = false;
-    //   this.user[this.index].has_been_changed = true;
-    //   this.user[this.index].response_color = '#b06262';
-    //   this.user[this.index].change_message = 'Ju keni thene qe nuk keni takuar Filan Fistekun';
-    // }, 1000);
+    debugger;
+    this.index = this.nearByUserList.findIndex(obj => obj.userId === userId);
+    this.nearByUserList[this.index].isLoading = true;
+    this.nearByUserList[this.index].isLoading = false;
+    this.nearByUserList[this.index].hasBeenChanged = true;
+    this.nearByUserList[this.index].responseColor = '#b06262';
+    this.nearByUserList[this.index].changeMessage = 'Ju keni thene qe nuk keni takuar ' + this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname;
+
   }
 
 

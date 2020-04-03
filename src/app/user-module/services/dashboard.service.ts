@@ -9,7 +9,7 @@ import {APP_CONFIG, IAppConfig} from '../../app.config';
   providedIn: 'root'
 })
 export class DashboardService {
-
+  userId = localStorage.getItem('userId');
   constructor(
     private http: HttpClient,
     @Inject(APP_CONFIG) private config: IAppConfig
@@ -20,15 +20,28 @@ export class DashboardService {
     return this.http.get<IUser[]>(this.config.apiEndpoint + 'api/v1/users/' + localStorage.getItem('userId') + '/feeds');
   }
 
-  addConnection(id) {
-    console.log('Added User' + id);
+  addConnection(id): Observable<any> {
+    debugger;
+    return this.http.post(this.config.apiEndpoint + 'api/v1/users/' +  localStorage.getItem('userId')  + '/connectionRequests', {
+      connectionRequestUserIdSender: Number(this.userId),
+      connectionRequestUserIdReceiver: id,
+      connectionRequestConnectionStatusId: 2
+    });
   }
 
   refuseUser(id) {
-    console.log('Added User' + id);
+    // this.http.post('api/v1/users/' +  localStorage.getItem('userId')  + '/connectionRequests',{
+    //   connectionRequestUserIdSender: localStorage.getItem('userId'),
+    //   connectionRequestUserIdReceiver: id,
+    //   connectionRequestConnectionStatusId: 0
+    // });
   }
 
-  addFamilyMember(id) {
-    console.log('Family Member' + id);
+  addFamilyMember(id): Observable<any> {
+    return this.http.post(this.config.apiEndpoint + 'api/v1/users/' +  localStorage.getItem('userId')  + '/connectionRequests', {
+      connectionRequestUserIdSender: localStorage.getItem('userId'),
+      connectionRequestUserIdReceiver: id,
+      connectionRequestConnectionStatusId: 1
+    });
   }
 }
