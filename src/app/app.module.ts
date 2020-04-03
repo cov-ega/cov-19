@@ -20,6 +20,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './core/interceptor/auth.interceptor';
 import {APP_CONFIG, AppConfig} from './app.config';
 import {AddHeaderInterceptor} from './core/interceptor/addHeader.interceptor';
+import {HttpErrorInterceptor} from './core/interceptor/httperror.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,11 @@ import {AddHeaderInterceptor} from './core/interceptor/addHeader.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    },
     { provide: APP_CONFIG, useValue: AppConfig }
   ],
   bootstrap: [AppComponent]
