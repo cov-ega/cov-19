@@ -28,8 +28,8 @@ export class AuthService {
    *  Login the user then tell all the subscribers about the new status
    */
   login(user): void {
-    localStorage.setItem('token', 'JWT');
-    localStorage.setItem('user', user);
+    localStorage.setItem('token', 'Bearer ' + user.token);
+    localStorage.setItem('userId', user.userId);
     this.isLoginSubject.next(true);
 
   }
@@ -39,6 +39,7 @@ export class AuthService {
    */
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     this.isLoginSubject.next(false);
   }
 

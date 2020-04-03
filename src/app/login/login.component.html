@@ -13,11 +13,11 @@
         <div class="col-12 px-0 pb-2">
           <mat-form-field class="example-full-width w-100">
             <mat-label>Emaili*</mat-label>
-            <input formnovalidate matInput placeholder="Shkruani emailin tuaj" formControlName="user_email_address">
-            <mat-error *ngIf="userLoginForm.get('user_email_address').hasError('required')">
+            <input formnovalidate matInput placeholder="Shkruani emailin tuaj" formControlName="userEmailAddress">
+            <mat-error *ngIf="userLoginForm.get('userEmailAddress').hasError('required')">
               Shkruani <strong>emailin</strong>
             </mat-error>
-            <mat-error *ngIf="!userLoginForm.get('user_email_address').hasError('required') &&  userLoginForm.get('user_email_address').hasError('email')">
+            <mat-error *ngIf="!userLoginForm.get('userEmailAddress').hasError('required') &&  userLoginForm.get('userEmailAddress').hasError('email')">
               Shkruani formatin e sakte per<strong>email</strong>
             </mat-error>
           </mat-form-field>
@@ -25,8 +25,8 @@
         <div class="col-12 px-0 pb-2">
           <mat-form-field class="example-full-width w-100">
             <mat-label>Fjalkalimi*</mat-label>
-            <input formnovalidate matInput type="password" placeholder="Shkruaj Fjalkalimin" formControlName="user_password">
-            <mat-error *ngIf="userLoginForm.get('user_password').hasError('required')">
+            <input formnovalidate matInput type="password" placeholder="Shkruaj Fjalkalimin" formControlName="userPassword">
+            <mat-error *ngIf="userLoginForm.get('userPassword').hasError('required')">
               Shkruani <strong>fjalkalimin</strong>
             </mat-error>
           </mat-form-field>

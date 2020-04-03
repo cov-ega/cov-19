@@ -44,24 +44,26 @@ export class UserService implements CanActivate {
   }
 
   login(userData) {
-
-    debugger;
-
     this.http.post(this.config.apiEndpoint + 'api/Authentication/tokens/users/generate', {
-      applicationToken : "AntiCovClient",
-      emailAddress: "eneshoxha@outlook.com",
-      password: "12345678",
-      dateLogin: "2020-04-02T14:56:43.633Z"
+      applicationToken : this.config.applicationToken,
+      emailAddress: userData.userEmailAddress,
+      password: userData.userPassword,
+      dateLogin: new Date().toISOString()
     }).subscribe({
-      next: data => console.log(data),
-      error: error => console.error('There was an error!', error)
+      next: data => {
+        this.authService.login(data);
+        this.router.navigate(['user/dashboard']);
+      },
+      error: error => {
+        alert(error.title + ' ' + error.status);
+      }
     });
 
 
-    this.http.get('http://dummy.restapiexample.com/api/v1/employees').subscribe({
-      next: data => console.log(data),
-      error: error => console.error('There was an error!', error)
-    });
+    // this.http.get('http://dummy.restapiexample.com/api/v1/employees').subscribe({
+    //   next: data => console.log(data),
+    //   error: error => console.error('There was an error!', error)
+    // });
   }
 
 
