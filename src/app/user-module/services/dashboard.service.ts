@@ -39,7 +39,7 @@ export class DashboardService {
 
   addFamilyMember(id): Observable<any> {
     return this.http.post(this.config.apiEndpoint + 'api/v1/users/' +  localStorage.getItem('userId')  + '/connectionRequests', {
-      connectionRequestUserIdSender: localStorage.getItem('userId'),
+      connectionRequestUserIdSender: Number(this.userId),
       connectionRequestUserIdReceiver: id,
       connectionRequestConnectionStatusId: 1
     });

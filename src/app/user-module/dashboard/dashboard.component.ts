@@ -32,18 +32,21 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  isFamilyMember(userId) {
-    debugger;
+  isFamilyMember(userId)  {
     this.index = this.nearByUserList.findIndex(obj => obj.userId === userId);
     this.nearByUserList[this.index].isLoading = true;
-    this.dashboardService.addFamilyMember(
+    this.dashboardService.addFamilyMember(userId).subscribe(
       (data => {
         this.nearByUserList[this.index].isLoading = false;
         this.nearByUserList[this.index].hasBeenChanged = true;
         this.nearByUserList[this.index].responseColor = '#a2c9aa';
         this.nearByUserList[this.index].changeMessage = this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname + ' eshte anetar if familjes tuaj';
       }),
+      (error => {
+        alert(error.title + ' ' + error.status);
+      })
     );
+
   }
 
   hasMeetUser(userId) {

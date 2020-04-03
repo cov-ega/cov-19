@@ -29,6 +29,9 @@ export class ProfileService {
   updateUserProfile(user): Observable<any>  {
     return this.http.patch<IUser>(this.config.apiEndpoint + 'api/v1/Users/' + localStorage.getItem('userId'), user);
   }
+  updateImageProfile(fileUpload): Observable<any> {
+    return  this.http.post(this.config.apiEndpoint +  '', fileUpload);
+  }
 
   editProfileInfo() {
   }

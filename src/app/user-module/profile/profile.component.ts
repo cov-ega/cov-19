@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   userInfo: FormGroup;
   user: IUser;
   userAddress: any;
+  selectedFile = null;
   countries: Array<any> = [
     {value: 'Kosova', viewValue: 'Kosova'},
     {value: 'Shqiperia', viewValue: 'Shqiperia'},
@@ -86,6 +87,14 @@ export class ProfileComponent implements OnInit {
   }
 
   fileChangeEvent(fileInput: any) {
+    this.selectedFile  = fileInput.target.files[0] as File;
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name);
+    this.profileService.updateImageProfile(fd).subscribe(
+      (data => {}),
+      (error => {})
+    )
+    console.log(fileInput.target.files[0])
     debugger;
   }
 
