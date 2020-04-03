@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
 
       }),
       (error => {
-        alert(error.title + ' ' + error.status);
+        console.log(error.title + ' ' + error.status);
       })
     );
   }
@@ -115,7 +115,7 @@ export class ProfileComponent implements OnInit {
         this.userInfo.patchValue(this.userAddress);
       }),
       (error => {
-        alert(error.title + ' ' + error.status);
+        console.log(error.title + ' ' + error.status);
       })
     );
   }

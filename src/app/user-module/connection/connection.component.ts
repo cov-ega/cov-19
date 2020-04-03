@@ -28,7 +28,7 @@ export class ConnectionComponent implements OnInit {
         this.connection = data;
       },
       error => {
-        alert(error.title + '' + error.status);
+        console.log(error.title + '' + error.status);
       }
     );
   }
@@ -39,7 +39,7 @@ export class ConnectionComponent implements OnInit {
         this.family = data;
       },
       error => {
-        alert(error.title + '' + error.status);
+        console.log(error.title + '' + error.status);
       }
     );
   }

@@ -56,7 +56,7 @@ export class UserService implements CanActivate {
         this.router.navigate(['user/dashboard']);
       },
       error => {
-        alert(error.title + ' ' + error.status);
+        console.log(error.title + ' ' + error.status);
       }
     );
 

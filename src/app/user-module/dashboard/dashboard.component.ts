@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
         this.nearByUserList = data;
       },
       error => {
-        alert(error.title + '' + error.status);
+        console.log(error.title + '' + error.status);
       }
     );
   }
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
         this.nearByUserList[this.index].changeMessage = this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname + ' eshte anetar if familjes tuaj';
       }),
       (error => {
-        alert(error.title + ' ' + error.status);
+        console.log(error.title + ' ' + error.status);
       })
     );
 
@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
         this.nearByUserList[this.index].changeMessage = 'Ju keni thene qe keni takuar ' + this.nearByUserList[this.index].userName + ' ' + this.nearByUserList[this.index].userSurname;
       }),
       (error => {
-        alert(error.title + ' ' + error.status);
+        console.log(error.title + ' ' + error.status);
       })
     );
 
