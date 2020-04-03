@@ -19,6 +19,7 @@ function passwordMatch(c: AbstractControl): { invalid: boolean } {
 })
 export class ProfileComponent implements OnInit {
   userProfile: any;
+  profileImg = "../../../assets/profile-image.png"
   userInfo: FormGroup;
   user: IUser;
   userAddress: any;

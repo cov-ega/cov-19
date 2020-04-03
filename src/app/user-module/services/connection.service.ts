@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {IUser} from '../../core/models/user.model';
+import {APP_CONFIG, IAppConfig} from '../../app.config';
 
 
 
@@ -1066,13 +1068,16 @@ const myFamily = [{
 })
 export class ConnectionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(APP_CONFIG) private config: IAppConfig
+  ) { }
   // TODO:Implement Connection Service
   getConnections() {
-    return connections;
+    return this.http.get<IUser[]>(this.config.apiEndpoint + '/api/v1/users/' + localStorage.getItem('userId') + '/myConnections/detail/false');
   }
   getFamily() {
-    return  myFamily;
+    return this.http.get<IUser[]>(this.config.apiEndpoint + '/api/v1/users/' + localStorage.getItem('userId') + '/myConnections/detail/true');
   }
   deleteConnectionById() {}
   deleteFamilyMemberById() {}

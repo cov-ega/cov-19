@@ -1,32 +1,26 @@
-<mat-tab-group animationDuration="0ms" class="connection-tabs-container">
-  <mat-tab label="Takimet e mia">
-    <div class="container pl-2 pr-2">
+<mat-tab-group animationDuration="0ms" class="connection-tabs-container" (selectedTabChange)="getTabData($event)">
+  <mat-tab label="Takimet e mia" >
+    <div class="container pl-2 pr-2" (click)="getConnection()">
       <div class="col-12">
         <div class="row pt-3">
           <user-card
-            *ngFor="let u of user"
+            *ngFor="let user of connection"
             [isFeed]="isFeed"
-            [user]="u"
-            (isFamilyMemberEvent)="isFamilyMember($event)"
-            (hasMeetUserEvent)="hasMeetUser($event)"
-            (hasNotMeetUserEvent)="hasNotMeetUser($event)"
+            [user]="user['friendUserData']"
             class="col-12 col-sm-6 col-md-6 col-lg-4 pl-0 pr-0">
           </user-card>
         </div>
       </div>
     </div>
   </mat-tab>
-  <mat-tab label="Familja Ime">
-    <div class="container pl-2 pr-2">
+  <mat-tab label="Familja Ime" (click)="getFamily()">
+    <div class="container pl-2 pr-2" (click)="getFamily()">
       <div class="col-12">
         <div class="row pt-3">
           <user-card
-            *ngFor="let u of user"
+            *ngFor="let user of family"
             [isFeed]="isFeed"
-            [user]="u"
-            (isFamilyMemberEvent)="isFamilyMember($event)"
-            (hasMeetUserEvent)="hasMeetUser($event)"
-            (hasNotMeetUserEvent)="hasNotMeetUser($event)"
+            [user]="user['friendUserData']"
             class="col-12 col-sm-6 col-md-6 col-lg-4 pl-0 pr-0">
           </user-card>
         </div>
