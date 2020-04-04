@@ -19,13 +19,13 @@ export class AppComponent {
     this.authService.isLoggedIn().subscribe(value => {
       if (value === true) {
         this.navbar = {
-          logo: '../assets/covid-logo.png',
+          logo: '../assets/AntiCov_Logo_Dark.svg',
           menu: [{name: '/user/dashboard', icon: 'home'}, {name: '/user/connection', icon: 'supervisor_account'}, {name: '/user/profile', icon: 'person'}],
           rightButtons: [],
         };
       } else {
         this.navbar = {
-          logo: '../assets/covid-logo.png',
+          logo: '../assets/AntiCov_Logo_Dark.svg',
           menu: [],
           rightButtons: [{name: 'login', color: 'primary', type: 'normal'}, {name: 'signup', color: 'primary', type: 'raised'}],
         };
