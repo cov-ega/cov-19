@@ -5,7 +5,9 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 
 
-@Injectable()
+@Injectable@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
 
