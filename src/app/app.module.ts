@@ -42,6 +42,7 @@ import {HttpErrorInterceptor} from './core/interceptor/httperror.interceptor';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     LottieAnimationViewModule.forRoot()
   ],
   providers: [
