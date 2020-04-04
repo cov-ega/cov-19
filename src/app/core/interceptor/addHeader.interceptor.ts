@@ -3,7 +3,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable} from 'rxjs';
 
 
-@Injectable@Injectable({
+@Injectable({
   providedIn: 'root'
 })
 export class AddHeaderInterceptor implements HttpInterceptor {

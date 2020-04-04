@@ -5,7 +5,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 
 
-@Injectable@Injectable({
+@Injectable({
   providedIn: 'root'
 })
 export class AuthService {
