@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-auto pb-4 margin-auto">
               <input type="file" (change)="fileChangeEvent($event)" class="image-uploader-input">
-                <div class="image-container margin-auto" [ngStyle]="{background: 'url(' + profileImg + ')'}" >
+                <div class="image-container margin-auto" [ngStyle]="{background: 'url(' + user.userProfileImage + ')'}" >
                 </div>
                 <div class="upload-image-container transition-basic shadow-8dp">
                     <span class="material-icons">camera_alt</span>

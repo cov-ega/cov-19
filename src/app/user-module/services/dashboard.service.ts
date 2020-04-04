@@ -25,7 +25,7 @@ export class DashboardService {
     return this.http.post(this.config.apiEndpoint + 'api/v1/users/' +  localStorage.getItem('userId')  + '/connectionRequests', {
       connectionRequestUserIdSender: Number(this.userId),
       connectionRequestUserIdReceiver: id,
-      connectionRequestConnectionStatusId: 2
+      connectionRequestConnectionStatusId: 4
     });
   }
 
@@ -41,7 +41,7 @@ export class DashboardService {
     return this.http.post(this.config.apiEndpoint + 'api/v1/users/' +  localStorage.getItem('userId')  + '/connectionRequests', {
       connectionRequestUserIdSender: Number(this.userId),
       connectionRequestUserIdReceiver: id,
-      connectionRequestConnectionStatusId: 1
+      connectionRequestConnectionStatusId: 3
     });
   }
 }
