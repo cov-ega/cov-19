@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng serve --prod --optimization=false",
+    "build": "ng serve --prod",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -29,8 +29,8 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.23",
-    "@angular/cli": "~8.3.23",
+    "@angular-devkit/build-angular": "^0.803.26",
+    "@angular/cli": "^8.3.26",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@babel/core": "^7.9.0",
