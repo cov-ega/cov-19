@@ -5,7 +5,7 @@ import {UserService} from '../core/services/user.service';
 
 
 function passwordMatch(c: AbstractControl): { invalid: boolean } {
-  if (c.get('user_password').value !== c.get('confirm_password').value) {
+  if (c.get('userPassword').value !== c.get('confirm_password').value) {
     return {invalid: true};
   }
 }
@@ -36,36 +36,47 @@ export class SignupComponent implements OnInit {
   // TODO: Add image uploader and checkbox for terms and agrements
 
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService) {
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private userService: UserService) {
   }
 
   // TODO: Validate form and implement http request
   ngOnInit() {
     this.initialUserInfo = this.formBuilder.group({
-      user_name: ['', [Validators.required, Validators.minLength(3)]],
-      user_surname: ['', [Validators.required, Validators.minLength(3)]],
-      user_email_address: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
-      user_phone_number: [''],
-      user_birthday: ['', [Validators.required]],
+      userName: ['', [Validators.required, Validators.minLength(3)]],
+      userSurname: ['', [Validators.required, Validators.minLength(3)]],
+      userEmailAddress: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
+      userPhoneNumber: [''],
+      userBirthday: ['', [Validators.required]],
       passwordGroup: this.formBuilder.group({
-        user_password: ['', [Validators.required]],
+        userPassword: ['', [Validators.required]],
         confirm_password: ['', [Validators.required]],
       }, {validator: passwordMatch}),
-    })
+    });
     this.otherUserInfo = this.formBuilder.group({
-      user_personal_id: [''],
-      address_country: ['', [Validators.required]],
-      address_city: ['', [Validators.required]],
-      address_street: ['', [Validators.required]],
-      user_last_travel_date: [''],
-      user_profile_image: [''],
+      userPersonalId: [''],
+      addressCountry: ['', [Validators.required]],
+      addressCity: ['', [Validators.required]],
+      addressStreet: ['', [Validators.required]],
+      userLastTravelDate: [''],
+      // userProfileImage: [''],
     });
   }
 
 
   signUp() {
-     let user = { ...this.initialUserInfo.value, ...this.otherUserInfo.value, ...this.initialUserInfo.get('passwordGroup').value}
-     console.log(user);
+    let user = {...this.initialUserInfo.value, ...this.otherUserInfo.value, ...this.initialUserInfo.get('passwordGroup').value};
+    this.userService.signup(user).subscribe(
+      (data => {
+        console.log(data);
+        debugger;
+
+      }),
+      (error => console.log(error))
+    );
+    this.router.navigate(['/login']);
   }
 
   back() {

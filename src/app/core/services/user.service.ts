@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {APP_CONFIG, IAppConfig} from '../../app.config';
+import {Observable} from 'rxjs';
 
 const user = {
   id: 1,
@@ -68,8 +69,8 @@ export class UserService implements CanActivate {
   }
 
 
-  signup(userData) {
-    console.log(userData);
+  signup(userData): Observable<any> {
+    return this.http.post(this.config.apiEndpoint + '/api/Authentication/registration', userData);
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {

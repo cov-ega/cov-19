@@ -15,8 +15,8 @@
               <div class="col-12 px-0 pb-2">
                 <mat-form-field class="example-full-width w-100">
                   <mat-label>Emri*</mat-label>
-                  <input formnovalidate matInput placeholder="Shkruani emrin tuaj" formControlName="user_name">
-                  <mat-error *ngIf="initialUserInfo.get('user_name').hasError('required') && initialUserInfo.get('user_name').hasError('minLength')">
+                  <input formnovalidate matInput placeholder="Shkruani emrin tuaj" formControlName="userName">
+                  <mat-error *ngIf="initialUserInfo.get('userName').hasError('required') && initialUserInfo.get('userName').hasError('minLength')">
                     Emri eshte i <strong>detyrushem</strong>
                   </mat-error>
                 </mat-form-field>
@@ -24,8 +24,8 @@
               <div class="col-12 px-0 pb-2">
                 <mat-form-field class="example-full-width w-100">
                   <mat-label>Mbiemri*</mat-label>
-                  <input formnovalidate matInput type="text" placeholder="Shkruani mbiemrin tuaj" formControlName="user_surname">
-                  <mat-error *ngIf="initialUserInfo.get('user_surname').hasError('required')">
+                  <input formnovalidate matInput type="text" placeholder="Shkruani mbiemrin tuaj" formControlName="userSurname">
+                  <mat-error *ngIf="initialUserInfo.get('userSurname').hasError('required')">
                     Mbiemri eshte i <strong>detyrushem</strong>
                   </mat-error>
                 </mat-form-field>
@@ -33,11 +33,11 @@
               <div class="col-12 px-0 pb-2">
                 <mat-form-field class="example-full-width w-100">
                   <mat-label>Emaili*</mat-label>
-                  <input formnovalidate matInput type="text" placeholder="Shkruani emailin tuaj" formControlName="user_email_address">
-                  <mat-error *ngIf="initialUserInfo.get('user_email_address').hasError('required')">
+                  <input formnovalidate matInput type="text" placeholder="Shkruani emailin tuaj" formControlName="userEmailAddress">
+                  <mat-error *ngIf="initialUserInfo.get('userEmailAddress').hasError('required')">
                     Emaili ehste i <strong>detyrushem</strong>
                   </mat-error>
-                  <mat-error *ngIf="!initialUserInfo.get('user_email_address').hasError('required') &&  initialUserInfo.get('user_email_address').hasError('email')">
+                  <mat-error *ngIf="!initialUserInfo.get('userEmailAddress').hasError('required') &&  initialUserInfo.get('userEmailAddress').hasError('email')">
                     Shkruani formatin e sakte te <strong>emailit</strong>
                   </mat-error>
                 </mat-form-field>
@@ -45,13 +45,13 @@
               <div class="col-12 px-0 pb-2">
                 <mat-form-field class="example-full-width w-100">
                   <mat-label>Telefoni (Opsional)</mat-label>
-                  <input formnovalidate matInput type="number" placeholder="Shkruani numrin e telefonit" formControlName="user_phone_number">
+                  <input formnovalidate matInput type="number" placeholder="Shkruani numrin e telefonit" formControlName="userPhoneNumber">
                 </mat-form-field>
               </div>
               <div class="col-12 px-0 pb-2">
                 <mat-form-field class="example-full-width w-100">
                   <mat-label>Data e Lindjes</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="user_birthday" placeholder="mm/dd/yyyy">
+                  <input matInput [matDatepicker]="picker" formControlName="userBirthday" placeholder="mm/dd/yyyy">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -60,8 +60,8 @@
                 <div class="col-12 px-0 pb-2">
                   <mat-form-field class="example-full-width w-100">
                     <mat-label>Password*</mat-label>
-                    <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="user_password">
-                    <mat-error *ngIf="initialUserInfo.get('passwordGroup.user_password').hasError('required')">
+                    <input formnovalidate matInput type="password" placeholder="Enter password" formControlName="userPassword">
+                    <mat-error *ngIf="initialUserInfo.get('passwordGroup.userPassword').hasError('required')">
                       Fjalkalimi eshte i <strong>detyrushem</strong>
                     </mat-error>
                   </mat-form-field>
@@ -91,13 +91,13 @@
             <div class="col-12 px-0 pb-2">
               <mat-form-field class="example-full-width w-100">
                 <mat-label>Nr. Leternjofitmi (opcionale)</mat-label>
-                <input formnovalidate matInput type="number" placeholder="Enter you personal ID" formControlName="user_personal_id">
+                <input formnovalidate matInput type="number" placeholder="Enter you personal ID" formControlName="userPersonalId">
               </mat-form-field>
             </div>
             <div class="col-12 px-0 pb-2">
               <mat-form-field class="example-full-width w-100">
                 <mat-label>Selekto Shtetin</mat-label>
-                <mat-select [(value)]="selectedCountry" formControlName="address_country" >
+                <mat-select [(value)]="selectedCountry" formControlName="addressCountry" >
                   <mat-option value="Kosovo">Kosovo</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -105,7 +105,7 @@
             <div class="col-12 px-0 pb-2">
               <mat-form-field class="example-full-width w-100">
                 <mat-label>Zgjedh Qytetin</mat-label>
-                <mat-select formControlName="address_city" >
+                <mat-select formControlName="addressCity" >
                   <mat-option *ngFor="let city of cities" [value]="city.value">
                     {{city.value}}
                   </mat-option>
@@ -115,7 +115,7 @@
             <div class="col-12 px-0 pb-2">
               <mat-form-field class="example-full-width w-100">
                 <mat-label>Zgjedh Lagjen</mat-label>
-                <mat-select formControlName="address_street" >
+                <mat-select formControlName="addressStreet" >
                   <mat-option *ngFor="let lagjet of lagjet" [value]="lagjet.value">
                     {{lagjet.value}}
                   </mat-option>
@@ -125,7 +125,7 @@
             <div class="col-12 px-0 pb-2">
               <mat-form-field class="example-full-width w-100">
                 <mat-label>Vizita e fundit jashte shtetit</mat-label>
-                <input matInput [matDatepicker]="picker1" formControlName="user_last_travel_date" >
+                <input matInput [matDatepicker]="picker1" formControlName="userLastTravelDate" >
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
