@@ -21,6 +21,11 @@ import {AuthInterceptor} from './core/interceptor/auth.interceptor';
 import {APP_CONFIG, AppConfig} from './app.config';
 import {AddHeaderInterceptor} from './core/interceptor/addHeader.interceptor';
 import {HttpErrorInterceptor} from './core/interceptor/httperror.interceptor';
+import {AuthService} from './core/services/auth.service';
+import {UserService} from './core/services/user.service';
+import {ProfileService} from './user-module/services/profile.service';
+import {DashboardService} from './user-module/services/dashboard.service';
+import {ConnectionService} from './user-module/services/connection.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,12 @@ import {HttpErrorInterceptor} from './core/interceptor/httperror.interceptor';
       useClass: HttpErrorInterceptor,
       multi: true
     },
-    { provide: APP_CONFIG, useValue: AppConfig }
+    { provide: APP_CONFIG, useValue: AppConfig },
+    // AuthService,
+    // UserService,
+    // ProfileService,
+    // DashboardService,
+    // ConnectionService
   ],
   bootstrap: [AppComponent]
 })
