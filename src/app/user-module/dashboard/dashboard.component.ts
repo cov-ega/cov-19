@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
   nearByUserList: Array<IUser>;
   isFeed = true;
   index: number;
+  isLoading: boolean;
 
   constructor(private dashboardService: DashboardService) {
   }
@@ -21,9 +22,12 @@ export class DashboardComponent implements OnInit {
   }
 
   initialize() {
+    this.isLoading  = true
     this.dashboardService.getNearbyUserList().subscribe(
       data => {
+        this.isLoading = false;
         this.nearByUserList = data;
+
       },
       error => {
         console.log(error.title + '' + error.status);

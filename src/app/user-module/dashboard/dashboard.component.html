@@ -1,6 +1,9 @@
 <div class="container pl-2 pr-2">
   <div class="col-12">
-    <div class="row pt-3">
+    <div class="row  pt-10 d-flex" *ngIf="isLoading">
+      <mat-spinner class="margin-auto align-self-center"></mat-spinner>
+    </div>
+    <div class="row pt-3" *ngIf="!isLoading">
       <user-card
         *ngFor="let user of nearByUserList"
         [isFeed]="isFeed"
@@ -11,5 +14,6 @@
         class="col-12 col-sm-6 col-md-6 col-lg-4 pl-0 pr-0">
       </user-card>
     </div>
+
   </div>
 </div>
