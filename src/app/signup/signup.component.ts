@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../core/services/user.service';
+import {Title} from '@angular/platform-browser';
 
 
 function passwordMatch(c: AbstractControl): { invalid: boolean } {
@@ -39,11 +40,14 @@ export class SignupComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private userService: UserService) {
+    private userService: UserService,
+    private title: Title
+    ) {
   }
 
   // TODO: Validate form and implement http request
   ngOnInit() {
+    this.title.setTitle('Sign Up')
     this.initialUserInfo = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
       userSurname: ['', [Validators.required, Validators.minLength(3)]],

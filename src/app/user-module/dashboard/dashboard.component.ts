@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DashboardService} from '../services/dashboard.service';
 import {IUser} from '../../core/models/user.model';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,10 +14,14 @@ export class DashboardComponent implements OnInit {
   index: number;
   isLoading: boolean;
 
-  constructor(private dashboardService: DashboardService) {
+  constructor(
+    private dashboardService: DashboardService,
+    private title: Title
+    ) {
   }
 
   ngOnInit() {
+    this.title.setTitle('HomePage')
     this.initialize();
 
   }

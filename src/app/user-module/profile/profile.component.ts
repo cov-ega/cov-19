@@ -4,6 +4,7 @@ import {AuthService} from '../../core/services/auth.service';
 import {Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IUser} from '../../core/models/user.model';
+import {Title} from '@angular/platform-browser';
 
 
 function passwordMatch(c: AbstractControl): { invalid: boolean } {
@@ -43,11 +44,14 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService,
     private authService: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private title: Title
+  ) {
   }
 
   // TODO: Validate form and implement http request
   ngOnInit() {
+    this.title.setTitle('User Profile')
     this.initialize();
     this.userInfo = this.formBuilder.group({
       userName: ['dadas', [Validators.required]],
@@ -94,14 +98,12 @@ export class ProfileComponent implements OnInit {
       (data => {}),
       (error => {})
     )
-    console.log(fileInput.target.files[0])
-    debugger;
+    console.log(fileInput.target.files[0]);
   }
 
 
 
   updateUserProfile() {
-    debugger
         this.profileService.updateUserProfile(this.userInfo.value).subscribe(
           (data => console.log(data)),
           (error => console.log(error))

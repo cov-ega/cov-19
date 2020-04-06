@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ConnectionService} from '../services/connection.service';
 import {IUser} from '../../core/models/user.model';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-connection',
@@ -15,10 +16,14 @@ export class ConnectionComponent implements OnInit {
   connection: Array<IUser>;
   family: Array<IUser>;
 
-  constructor(private connectionService: ConnectionService) {
+  constructor(
+    private connectionService: ConnectionService,
+    private title: Title
+    ) {
   }
 
   ngOnInit() {
+    this.title.setTitle("Connection")
     this.getConnection();
   }
 
